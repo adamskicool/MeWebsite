@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+html {
+    height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Lora';
+  background-color:  rgba(233, 235, 238);
+}
+*:focus {
+    outline: none;
+}
+
+/*
+Styling: HEADER.
+*/
+.header {
+  padding: 10px 16px;
+  color: #f1f1f1;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 30px;
+  z-index: 10;
+}
+.header {
+    text-align: right;
+    background-color: rgba(250, 180, 49);
+    padding: 2px 10px;
+    margin-bottom: 5px;
+}
+.header > a{
+    font-family: 'Montserrat';
+    font-size: 21px;
+    text-decoration: none;
+    color: rgba(181, 34, 58);
+    padding: 8px 8px; 
+    margin-right: 10px;
+    transition: 200ms ease-in-out 20ms;
+}
+
+.header > a:hover {
+    color: rgba(181, 34, 58, 0.65);
+}
+.header > .most-right {
+    padding-right: 12.5%;
+}
+.content {
+    margin-top: 40px;
+    transition: 300ms filter ease-in-out 0ms; 
+}
+
+
+
+
+/*
+Grid: PROJECTS (grid for the whole page).
+*/
+.menu { grid-area: a; position: sticky; top: 40px; }
+.edit-options { grid-area: b; position: sticky; top: 40px; }
+.main { grid-area: c; z-index: 9;}
+.edit-cv { grid-area: a2; position: sticky; top: 40px; }
+.edit-profile { grid-area: a3; position: sticky; top: 230px; }
+
+.project-grid {
+    display: grid;
+    grid-template-areas: 
+        '. a b a2 .'
+        '. a c a2 .'
+        '. . c a3 .'
+        '. . c . .';
+    grid-template-rows: 30px 150px 150px auto;
+    grid-template-columns: 10% 15% 50% 15% 10%;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+
+/*
+LAYER INDEXING
+*/
+.header { z-index: 10; }
+.menu { z-index: 10; }
+.edit-options { z-index: 10; }
+.main { z-index: 9; }
+.edit-cv { z-index: 10; }
+.edit-profile { z-index: 10; }
+
+/*
+Grid: POSTS (grid for the individual posts). POSTS GRID resides in the MAIN GRID-AREA of the PROJECTS GRID.
+*/
+.description { grid-area: d; }
+.check-box { 
+    grid-area: e; display: flex;
+    align-items : center ;
+    justify-content : center;
+}
+.edit-button { 
+    grid-area: e2;
+    display: flex;
+    align-items : center ;
+    justify-content : center;
+}
+.post-grid {
+    display: grid;
+    grid-template-areas: 
+        'd e2 e';
+    grid-template-rows: 50px;
+    grid-template-columns: auto  50px 50px;
+    padding: 5px;
+}
+
+/*
+Styling: PROJECT & POST GRID
+*/
+.project-grid > div {
+    border-radius: 2px;
+    text-align: center;
+    font-size: 30px;
+}
+.post-grid {
+    border-radius: 3px;
+    transition: background-color 100ms ease-in-out 0s;
+    padding 0px;
+    margin-bottom: 5px;
+}
+.post-grid:hover {
+    background-color: rgba(240, 240, 240);
+}
+.post-grid > .description > h5 {
+    font-size: 15px;
+}
+.post-grid > .description > p {
+    font-size: 11px;
+}
+
+
+
+
+
+
+/*
+Styling: MENU
+*/
+.menu > h6, h5 {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    margin: 10px;
+}
+.menu > h6 {
+    font-size: 16px;
+}
+
+.menu > input, select {
+    font-family: 'Lora';
+    width: 80%;
+    height: 25px;
+    float: left;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 10px;
+    background-color: rgba(233, 235, 238);
+    color: grey;
+}
+/*
+Styling: EDIT-CV
+*/
+.edit-cv > h6, h5 {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    margin: 10px;
+}
+.edit-cv > h6 {
+    font-size: 16px;
+}
+.edit-cv > input, select {
+    font-family: 'Lora';
+    width: 80%;
+    height: 25px;
+    float: left;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 10px;
+    background-color: rgba(233, 235, 238);
+    color: grey;
+}
+/*
+Styling: EDIT-PROFILE
+*/
+.edit-profile > h6, h5 {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    margin: 10px;
+}
+.edit-profile > h6 {
+    font-size: 16px;
+}
+.edit-profile > input, select {
+    font-family: 'Lora';
+    width: 80%;
+    height: 25px;
+    float: left;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 10px;
+    background-color: rgba(233, 235, 238);
+    color: grey;
+}
+
+/*
+Styling: DESCRIPTION & CHECKBOX (text and box on each post).
+*/
+.description > h6, h5{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    margin: 10px;
+}
+.description > h6 {
+    font-size: 16px;
+}
+.description > p{
+    font-size: 16px;
+    text-align: left;
+    margin: 10px;
+}
+.check-box > input{
+    margin-top: 42%;
+}
+/*
+Styling: EDIT-POST-BUTTON
+*/
+.edit-post {
+    width: 24px;
+    height: 24px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/edit_icon.png') no-repeat left center;
+    transform: scale(0.8);
+    transition: transform 100ms ease-in-out 0ms;
+}
+.edit-post:hover {
+    transform: scale(0.9);
+}
+.edit-post:active {
+    transform: scale(0.7);
+}
+/*
+Styling: DELETE-BUTTON
+*/
+#delete {
+    width: 24px;
+    height: 24px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/delete_icon.png') no-repeat left center;
+    transform: scale(0.8);
+    transition: transform 100ms ease-in-out 0ms;
+}
+#delete:hover {
+    transform: scale(0.9);
+}
+#delete:active {
+    transform: scale(0.7);
+}
+/*
+Styling: NEW-POST-BUTTON
+*/
+#new-post {
+    width: 24px;
+    height: 24px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/new_icon.png') no-repeat left center;
+    transform: scale(0.8);
+    transition: transform 100ms ease-in-out 0ms;
+}
+#new-post:hover {
+    transform: scale(0.9);
+}
+#new-post:active {
+    transform: scale(0.7);
+}
+/*
+Styling: REFRESH-BUTTON
+*/
+#refresh-post {
+    width: 24px;
+    height: 24px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/refresh_icon.png') no-repeat left center;
+    transform: scale(0.7);
+    transition: transform 100ms ease-in-out 0ms;
+}
+#refresh-post:hover {
+    transform: scale(0.8);
+}
+#refresh-post:active {
+    transform: scale(0.6);
+}
+/*
+Styling: RESUMÉ-ICON
+*/
+#resume-icon {
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/resume2_icon.png') no-repeat center;
+    padding-left: 135px;
+    transform: scale(0.8);
+}
+/*
+Styling: PROFILE-ICON
+*/
+#profile-icon {
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background:url('../src/icons/profile2_icon.png') no-repeat center;
+    padding-left: 135px;
+    transform: scale(0.8);
+}
+/*
+Styling: EXIT-EDIT-CV BUTTON
+*/
+#exit-edit-cv {
+    background:url('../src/icons/remove_icon.png') no-repeat center;
+}
+/*
+Styling: EDIT OPTIONS MENU
+*/
+.edit-options > input{
+    float: right;
+    margin-right: 24px;
+    margin-top: 4px;
+}
+
+
+/*
+Styling: NEW-POST, EDIT-POST, EDIT-CV.
+*/
+.new-post-grid > *:focus {
+    outline: none;
+}
+.new-post-grid > input {
+    border-radius: 2px;
+    font-size: 14px;
+}
+.new-post-grid > .images-new-post {
+    background-color: white;
+}
+#exit-new-post, #exit-edit-post, #exit-edit-cv {
+    outline: none;
+    border: none;
+    background-color: rgba(182, 34, 58);
+    color: white;
+    font-size: 14px;
+}
+#exit-new-post:focus, #exit-edit-post:focus, #exit-edit-cv:focus {
+    background-color: rgba(160, 34, 58);
+}
+#upload-new-post, #upload-new-changes, #upload-edit-cv {
+    outline: none;
+    border: none;
+    background-color: rgba(109, 187, 76);
+    color: white;
+    font-size: 14px;
+}
+#upload-new-post:focus, #upload-new-changes:focus, #upload-edit-cv:focus {
+    background-color: rgba(109, 167, 76);
+}
+#title-new-post, #title-edit-post {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+/*
+GRIDS FOR THE DIFFERENT POSTS!!!
+Grid: NEW-POST.
+**/
+.new-post-grid {
+    display: grid;
+    grid-template-areas: 
+        '. . . .'
+        '. . e1 .'
+        '. e5 e2 .'
+        '. e5 e3 .'
+        '. . e3 .'
+        '. . e4 .'
+        '. . . .';
+    grid-template-rows: 50px 20px 30px 200px 250px 20px 10%;
+    grid-template-columns: 10% 15% 50% 25%;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+.exit-new-post { grid-area: e1; }
+.title-new-post { grid-area: e2; }
+.content-new-post { grid-area: e3; }
+.upload-new-post { grid-area: e4; }
+.images-new-post { 
+    grid-area: e5;
+    background-color: white;
+    border: 1px solid rgba(221, 223, 226);
+    border-radius: 3px;
+    overflow-x: hide;
+}
+/**
+Grid: EDIT-POST.
+**/
+.edit-post-grid {
+    display: grid;
+    grid-template-areas: 
+        '. . .'
+        '. e1 .'
+        '. e2 .'
+        '. e3 .'
+        '. e4 .'
+        '. . .';
+    grid-template-rows: 50px 20px 30px 450px 20px 10%;
+    grid-template-columns: 25% 50% 25%;
+    grid-row-gap: 5px;
+}
+.exit-edit-post { grid-area: e1; }
+.title-edit-post { grid-area: e2; }
+.content-edit-post { grid-area: e3; }
+.upload-edit-post { grid-area: e4; }
+/**
+Grid: EDIT-CV.
+**/
+.edit-cv-grid {
+    display: grid;
+    grid-template-areas: 
+        '. . . .'
+        '. . f1 .'
+        '. f2 f2 .'
+        '. f3 f3 .'
+        '. . . .';
+    grid-template-rows: 10px 30px 570px 20px 10%;
+    grid-template-columns: 10% auto 30px 10%;
+    grid-template-columns: 10% auto 30px 10%;
+    grid-row-gap: 5px;
+}
+.exit-edit-cv { grid-area: f1; border-radius: 3px;}
+.content-edit-cv { grid-area: f2; }
+.upload-edit-cv { grid-area: f3; }
+
+
+
+
+
+
+
+/*
+Styling for the overlay.
+*/
+#overlay, #overlay-edit, #overlay-cv {
+    /* some styles to position the modal at the center of the page */
+    position: fixed;
+    display: none;
+    transition: opacity 300ms ease-in-out 0ms;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* needed styles for the overlay */
+    z-index: 20; /* keep on top of other elements on the page */
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+}
+#overlay-fade, #overlay-fade-edit, #overlay-fade-cv {
+    opacity: 0; /* Starting opacity, when the new-post button is clicked, animate the opacity and
+                set display: block; */
+    z-index: 20;
+    transition: opacity 300ms ease-in-out 0ms;
+}
+
+/*
+Fix the borders of all the divs
+*/
+.menu, .edit-options, .edit-cv, .edit-profile, .post-grid {
+    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.075);*/
+    background-color: white;
+    border: 1px solid rgba(221, 223, 226);
+    border-radius: 3px;
+}
+
+#editor, #editor2, #editor3 {
+    background: white; 
+    border-radius: 3px;
+}

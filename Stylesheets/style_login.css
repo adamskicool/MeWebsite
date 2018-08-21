@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+*:focus {
+    outline: none;
+}
+
+
+
+body {
+    font-family: 'Rubik';
+    color: black;
+    height: 100%;
+    width: 100%;
+    background: url('../src/images/BusinessCardBackground.jpg');
+    background-size: cover; 
+}
+
+.login { 
+    grid-area: a; 
+}
+
+.sign-up{
+    grid-area: b;
+}
+
+.login-message {
+    grid-area: c;
+}
+
+.logo {
+    grid-area: d;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    '. c c d'
+    '. a b d';
+  grid-template-rows:   auto auto;
+  grid-template-columns: 20% 20% 20% 40%;
+  grid-gap: 5px;
+}
+
+.grid-container > div {
+  text-align: center;
+}
+
+.login-message > h1 {
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 4px 4px rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+input {
+    width: 180px;
+    height: 25px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    margin: 35px 0px 0px 0px;
+    transition: transform 200ms ease-in-out 20ms;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    font-family: 'Montserrat';
+    font-size: 13px;
+}
+
+input:focus  {
+    transform: scale(1.05, 1.05);
+}
+
+
+h6{
+    font-size: 20px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 0px 60px;
+    padding-top: 15px;
+    padding-bottom: 4px;
+}
+
+p {
+    font-size: 13px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+    margin: 10px 60px;
+    padding-top: 15px;
+    padding-bottom: 4px;
+}
+
+.login > input[type="submit"], textarea {
+    background-color: rgba(109, 187, 76);
+    color: white;
+}
+
+.sign-up > input[type="submit"], textarea {
+    background-color: rgba(251, 180, 49);
+    color: white;
+}

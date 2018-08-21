@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Log In</title>
+        <link rel="stylesheet" type="text/css" href="../Stylesheets/style_login.css">
+    </head>
+    <body>
+        <div class="grid-container">
+            <!--<div class="logo">
+                <img src="../src/logo/ME_logo.png" height="200px" width="200px">
+            </div>-->
+            <div class="login-message">
+                <h1 weight="bold">Login to costumize your Business Card</h1>
+            </div>
+            <div class="login">
+                <h6>Log in</h6>
+                <input id="username-login" name="username" type="text" placeholder="Username" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                <input id="password-login" name="password" type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                <input id="submit-button-login" type="submit" value="Log in"/>
+                <p id="error-message"></p>
+            </div>
+            <div class="sign-up">
+                <h6>Sign up</h6>
+                <input id="email-signup" name="email" type="text" placeholder="Email" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                <input id="username-signup" name="username" type="text" placeholder="Username" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                <input id="password-signup" name="password" type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                <input id="password-signup-again" name="password" type="password" placeholder="Confirm password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm password'">
+                <input id="submit-button-signup" type="submit" value="Register new user"/>
+                <p id="error-message-signup"></p>
+            </div>
+        </div>
+    </body>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        /**
+        Add listener for when the "login"-button is pressed.
+        **/
+        document.getElementById("submit-button-login").onclick = function() {
+            var text_field_username = document.getElementById("username-login");
+            var text_field_password = document.getElementById("password-login");
+            var username = text_field_username.value;
+            var password = text_field_password.value;
+            //create different XMLHttpRequest depenting on webbrowser.
+            var xhr;
+            if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                xhr = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { // IE 8 and older
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            var data = "username="+username+"&password="+password; 
+            //link to correct php script.
+            xhr.open("POST", "database/check-user.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //send the data to the php script.
+            xhr.send(data);
+            
+            var response;
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        response = xhr.responseText;
+                        if(response == "1"){
+                            //Redirect user to the edit-projects screen.
+                            //Redirect using post with the username entered.
+                            var form = $('<form action="edit-projects.php" method="post">'+
+                                        '<input type="text" name="username" value="'+username+'">'+
+                                        '</form>');
+                            $('body').append(form);
+                            form.submit();
+                        } 
+                        else if(response == "0") {
+                            document.getElementById("error-message").innerHTML = "Wrong login credentials, try again!"
+                        }
+
+                    }
+                }
+            }
+            //clear the text fields
+            text_field_username.value = '';
+            text_field_password.value = '';
+        }
+        /**
+        Add listener for when the "register new user"-button is pressed.
+        **/
+        document.getElementById("submit-button-signup").onclick = function() {
+            var email_textfield = document.getElementById("email-signup");
+            var username_textfield = document.getElementById("username-signup");
+            var password_textfield = document.getElementById("password-signup");
+            var password_again_textfield = document.getElementById("password-signup-again");
+            var email = email_textfield.value;
+            var username = username_textfield.value;
+            var password = password_textfield.value;
+            var password_again = password_again_textfield.value;
+            
+            //create different XMLHttpRequest depenting on webbrowser.
+            var xhr;
+            if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                xhr = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { // IE 8 and older
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            var data = "email="+email+"&username="+username+"&password="+password+"&password_again="+password_again; 
+            //link to correct php script.
+            xhr.open("POST", "database/create-new-user.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //send the data to the php script.
+            xhr.send(data);
+            var response;
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        response = xhr.responseText;
+                        document.getElementById("error-message-signup").innerHTML = response;
+                    }
+                }
+            }
+            
+        }
+    </script>
+</html>

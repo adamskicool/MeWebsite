@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
+body {
+    font-family: 'Lora';
+    color: black;
+    margin: 0px;
+    background-color: rgba(233, 235, 238);
+}
+
+/*
+Styling: BACKGROUND GRADIENTS!
+*/
+.background {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: opacity 1.4s linear 0s;
+}
+
+#background-projects {
+    /*background: linear-gradient(#7F7FD5, #86A8E7, #91EAE4);*/
+    background: linear-gradient(#87CEFF, #B0E2FF);
+    opacity: 0.8;
+}
+#background-cv {
+    /*background: linear-gradient(#a8ff78, #78ffd6);*/
+    background: linear-gradient(#1C86EE, #62B1F6, #87CEFF);
+    opacity: 0;
+}
+#background-profile {
+    /*background: linear-gradient(#F37335, #FDC830);*/
+    background: linear-gradient(#0276FD, #1874CD, #1C86EE);
+    opacity: 0;
+}
+
+
+
+*:focus {
+    outline: none;
+}
+/*
+All styling for the sticky header
+*/
+.header {
+    padding: 10px 16px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 30px;
+    z-index: 11;
+    text-align: right;
+    padding: 2px 10px;
+    margin-bottom: 5px;
+}
+.header > button {
+    font-size: 21px;
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 4px 4px; 
+    margin-right: 10px;
+    margin-top: 5px;
+    transition: 200ms ease-in-out 20ms;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.075);
+    background-color: black;
+    border-style: 1px solid rgba(221, 223, 226);
+    border-radius: 3px;
+}
+.header > button:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+.header > .most-right {
+    margin-right: 12.5%;
+}
+
+
+/*
+Styling: CONTENT
+*/
+.content {
+    top: 50px;
+    z-index: 10;
+    position: fixed;
+    height: 92%;
+    width: 100%;
+    overflow-y: scroll;
+}
+/*
+Styling the main grid.
+*/
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        '. b a .'
+        '. b . .';
+    grid-template-rows: 50% auto;
+    grid-template-columns: 12.5% 65% 20% 2.5%;
+    grid-row-gap: 5px;
+    border-radius: 3px;
+}
+.menu { 
+    grid-area: a; 
+    position: sticky; 
+    top: 10px;
+    margin-left: 10px;
+}
+.menu > h6 {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    margin: 10px;
+}
+.menu > a {
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: left;
+    margin: 10px;
+}
+
+.menu > a:hover {
+    color: grey;
+}
+.main { 
+    grid-area: b; 
+}
+.grid-container > div {
+  text-align: center;
+  font-size: 30px;
+}
+/*
+Styling the grid for the projects them selvs
+*/
+.image { grid-area: e; }
+.description { grid-area: f; }
+.project-grid {
+    display: grid;
+    grid-template-areas: 
+        'f e';
+    grid-template-rows: 300px;
+    grid-template-columns: 60% 40%;
+    padding: 5px;
+    margin-top: 10px;
+}
+/*
+Style the description of the post
+*/
+.description{
+    height: 300px;
+    overflow-y: scroll;
+}
+.description > p, h1, h2, h3, h4, ul, ol, blockquote{
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+.description > p{
+    font-size: 13px;
+}
+.description > h1 {
+    font-size: 22px;
+}
+.description > h2 {
+    font-size: 20px;
+}
+.description > h3 {
+    font-size: 18px;
+}
+.description > h4 {
+    font-size: 16px;
+}
+.description > blockquote {
+    font-size: 13px;
+    text-align: center;
+    /*
+    Needs more tweeking!
+    */
+}
+.image > img{ 
+    object-fit: fill;
+}
+/*
+Grid for the CV
+*/
+.cv-grid {
+    display: grid;
+    grid-template-areas: 
+        '. g .';
+    grid-template-columns: 20% auto 20%;
+}
+.work-experience {
+    grid-area: g;
+    background-color: rgba(250, 250, 250);
+    border-radius: 3px;
+}
+.work-experience > h5 {
+    font-size: 22px;
+    margin: 0px;
+    padding-top: 60px;
+}
+.work-experience > h6 {
+    font-size: 20px;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 4px;
+}
+.work-experience > p {
+    font-size: 16px;
+    padding: 4px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+/*
+Grid and styling for the profile.
+*/
+.profile-grid {
+    display: grid;
+    grid-template-areas: 
+        '. h i .'
+        '. h j .';
+    grid-template-rows: 450px auto;
+    grid-template-columns: 10% auto 40% 10%;
+    grid-gap: 5px;
+}
+.profile-grid > div {
+    background-color: rgba(250, 250, 250);
+    border-radius: 5px;
+}
+.long-description {
+    grid-area: h;
+}
+.profile-pic {
+    grid-area: i;
+}
+.short-description {
+    grid-area: j;
+}
+.profile-grid > .short-description, .long-description > h6, h5, h4, h3, h2, h1, p {
+    margin: 10px;
+}
+
+/*
+Styling the footer
+*/
+.footer > p{
+    font-size: 13px;
+    padding: 10px;  
+    text-align: center;
+}
+
+
+/*
+Fix the background colors
+*/
+.menu, .project-grid, .work-experience, .long-description, .short-description, .footer {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.075);
+    background-color: white;
+    border-style: 1px solid rgba(221, 223, 226);
+    border-radius: 3px;
+} 
+
+/*
+Properties for the overlay between projects, cv and profile.
+*/
+#projects {
+    display: block;
+}
+#cv {
+    display: none;
+}
+#profile {
+    display: none;
+}
