@@ -56,6 +56,7 @@ All styling for the sticky header
     text-align: right;
     padding: 2px 10px;
     margin-bottom: 5px;
+    transition: 300ms filter ease-in-out 0ms;
 }
 .header > button {
     font-size: 21px;
@@ -102,6 +103,7 @@ Styling the main grid.
     grid-template-columns: 12.5% 65% 20% 2.5%;
     grid-row-gap: 5px;
     border-radius: 3px;
+    z-index: 5;
 }
 .menu { 
     grid-area: a; 
@@ -138,16 +140,38 @@ Styling the main grid.
 /*
 Styling the grid for the projects them selvs
 */
-.image { grid-area: e; }
-.description { grid-area: f; }
+.image { grid-area: e;}
+.description { grid-area: f; z-index: 10; overflow-y: hidden;}
+.see-more-button { 
+    grid-area: f1; 
+    z-index: 11;
+    font-size: 12px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 4px;
+    margin: 5px;
+    transition: 200ms ease-in-out 20ms;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.075);
+    background-color: #1C86EE;
+    border-style: 1px solid rgba(221, 223, 226);
+    border-radius: 3px;
+    min-width: 65px;
+}
+.see-more-button:hover {
+    color: white;
+}
+
 .project-grid {
     display: grid;
     grid-template-areas: 
-        'f e';
-    grid-template-rows: 300px;
-    grid-template-columns: 60% 40%;
-    padding: 5px;
+        'f f e'
+        'f1 . e';
+    grid-template-rows: 250px 40px;
+    grid-template-columns: 10% 50% 40%;
+    padding: 3px;
     margin-top: 10px;
+    overflow-y: hidden;
 }
 /*
 Style the description of the post
@@ -272,10 +296,54 @@ Properties for the overlay between projects, cv and profile.
 */
 #projects {
     display: block;
+    transition: 300ms filter ease-in-out 0ms;
 }
 #cv {
     display: none;
 }
 #profile {
     display: none;
+}
+
+/*
+Styling: OVERLAY-PROJECT
+*/
+#overlay-project {
+    /* some styles to position the modal at the center of the page */
+    position: fixed;
+    display: block;
+    transition: opacity 300ms ease-in-out 0ms;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* needed styles for the overlay */
+    z-index: 20; /* keep on top of other elements on the page */
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+    overflow-y: scroll;
+}
+#overlay-fade-project {
+    opacity: 0; /* Starting opacity, when the new-post button is clicked, animate the opacity and
+                set display: block; */
+    z-index: 20;
+    /*transition: opacity 300ms ease-in-out 0ms;*/
+}
+/*
+Grid: OVERLAY-PROJECT
+*/
+.project-images { grid-area: k;}
+.project-content { grid-area: l;}
+.overlay-grid {
+    display: grid;
+    grid-template-areas: 
+        '. . .'
+        '. k .'
+        '. l .'
+        '. . .';
+    grid-template-rows: 50px 200px 500px 30px;
+    grid-template-columns: 10% auto 10%;
+    z-index: 20;
 }

@@ -55,7 +55,10 @@
                     </div>
                     <div class="images-new-post">
                         <h6>Insert images:</h6>
-                        <input type="file" name="files[]" multiple="false">
+                        <input type="file" id="file-new-post" name="files[]" onchange="updateFile()" multiple>
+                        <label for="file-new-post" id="file-label-new-post">Choose file</label>
+                        <div id="file-names">
+                        </div>
                     </div>
                     <input class="upload-new-post" id="upload-new-post" type="submit" value="Upload">
                 </div>
@@ -211,7 +214,6 @@
                 //ladda upp bilden som är selected.
                 const url = 'database/upload_images.php';
                 const form = document.querySelector('form');
-
                 const files = document.querySelector('[type=file]').files;
                 const formData = new FormData();
                 formData.append('username', username);
@@ -220,7 +222,6 @@
 
                     formData.append('files[]', file);
                 }
-
                 fetch(url, {
                     method: 'POST',
                     body: formData
@@ -243,25 +244,14 @@
                 //found on the checkboxes Attribute "name".
                 var data = "username=" + username + "&title=" + title + "&content=" + content + "&img_name=" + img_name;
                 //link to correct php script.
-                xhr.open("POST", "database/new-post.php", true);
+                xhr.open("POST", "database/new-post.php", false);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 //send the data to the php script.
                 xhr.send(data);
+                //var respons = xhr.responseText;
+                //alert(respons);
                 fadeOutNewPost();
             }
-            /*
-             window.addEventListener('load', function() {
-              document.querySelector('input[type="file"]').addEventListener('change', function() {
-                  if (this.files && this.files[0]) {
-                      var img = document.querySelector('img');  // $('img')[0]
-                      var image_url = URL.createObjectURL(this.files[0]); // set src to file url
-                      img.src = image_url;
-                      alert(image_url);
-                      img.onload = imageIsLoaded; // optional onload event listener
-                  }
-              });
-            });
-            */
             /**
             Functions for the overlay when creating new post.
             **/
@@ -484,8 +474,20 @@
                 edit_cv.style.display = 'none';   
             });
         }  
-
-        function imageIsLoaded(e) { alert(e); }
+            
+        /*
+        Function for updating the file label when a user inputs a file.
+        */
+        function updateFile() {
+            const files = document.querySelector('[type=file]').files;
+            var num_files = files.length;
+            var i;
+            document.getElementById("file-names").innerHTML = "";
+            for(i=0; i<num_files; i++) {
+                document.getElementById("file-names").innerHTML += "<br>" + files[i].name;  
+            }
+            document.getElementById("file-label-new-post").innerHTML = num_files + " selected";
+        }
         </script>
     </body>    
 </html>

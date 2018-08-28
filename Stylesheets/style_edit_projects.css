@@ -250,6 +250,7 @@ Styling: EDIT-POST-BUTTON
 }
 .edit-post:hover {
     transform: scale(0.9);
+    cursor: pointer;
 }
 .edit-post:active {
     transform: scale(0.7);
@@ -268,6 +269,7 @@ Styling: DELETE-BUTTON
 }
 #delete:hover {
     transform: scale(0.9);
+    cursor: pointer;
 }
 #delete:active {
     transform: scale(0.7);
@@ -286,6 +288,7 @@ Styling: NEW-POST-BUTTON
 }
 #new-post:hover {
     transform: scale(0.9);
+    cursor: pointer;
 }
 #new-post:active {
     transform: scale(0.7);
@@ -304,6 +307,7 @@ Styling: REFRESH-BUTTON
 }
 #refresh-post:hover {
     transform: scale(0.8);
+    cursor: pointer;
 }
 #refresh-post:active {
     transform: scale(0.6);
@@ -361,6 +365,30 @@ Styling: NEW-POST, EDIT-POST, EDIT-CV.
 .new-post-grid > .images-new-post {
     background-color: white;
 }
+/*
+Styling: FILEINPUT - keep it hidden to show the label instead.
+*/
+#file-new-post {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#file-label-new-post {
+    background-color: rgba(92, 166, 213);
+    color: white;
+    border-radius: 3px;
+}
+#file-label-new-post:hover {
+    background-color: rgba(44, 78, 104);
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
 #exit-new-post, #exit-edit-post, #exit-edit-cv {
     outline: none;
     border: none;

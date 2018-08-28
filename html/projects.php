@@ -9,7 +9,7 @@
         <div class="background" id="background-cv"></div>
         <div class="background" id="background-profile"></div>
         <!--This is the header of the page.-->
-        <div class="header">
+        <div class="header" id="header">
             <button id="projects-button">Projects</button>
             <button id="cv-button">CV</button>
             <button id="profile-button" class="most-right">About me</button>
@@ -51,8 +51,9 @@
                                     </div>
                                     <div class="description">
                                         <h1><?php echo $row['title']?></h1>
-                                        <?php echo $row['description']?>
+                                        <p><?php echo $row['description']?></p>                                   
                                     </div>
+                                    <button class="see-more-button" id="<?php echo $row['postID']?>">See more</button> 
                                 </div>
                             <?php
                         }
@@ -68,30 +69,10 @@
                         #fill with content from database.
                         $query_cv = "SELECT content FROM CV WHERE username = '".$username."';";
                         $result_cv = $conn -> query($query_cv);
-                        #return the title and the content (description of the post).
-                        #echo $query;
                         while($row = $result_cv -> fetch_assoc()){
                             echo $row['content'];
                         }
                     ?>
-                    <!--<h5>EDUCATION</h5>
-                    <h6>Aug 2012 - June 2014</h6>
-                    <p>Gymnasium; Nature Science, Kristofferskolan</p>
-                    <h6>Aug 2016 - </h6>
-                    <p>University: Civilengineer in Computersience, Royal Insitute of Technology (KTH)</p>
-                    <h5>WORK EXPERIENCE</h5>
-                    <h6>Summers 2007 - 2009</h6>
-                    <p>Mälarö Golfclub: Driving Range worker</p>
-                    <h6>Summer 2010</h6>
-                    <p>Ekerö county: Designed and constructed a concrete road blocker with the shape of and color of an apple. This work was supervised by Peter Ekroth.</p>
-                    <h6>Dec 2014 - July 2015</h6>
-                    <p>Calliptus: Supermarket product promoter</p>
-                    <h6>Feb 2014 - Aug 2015</h6>
-                    <p>Ekgården Retirement Home: Care assistant to the elderly</p>
-                    <h6>Feb 2016 - Oct 2016</h6>
-                    <p>Ångbåten Preschool: Preschool assistant teacher</p>
-                    <h6>May 2015 - </h6>
-                    <p>Best boyfriend ever. Very good recommendations. Learned to do nice dances. </p> -->
                 </div>
             </div>
         </div>
@@ -115,7 +96,18 @@
                 </div>
             </div>
         </div>
-
+        <div id="overlay-fade-project">
+            <div id="overlay-project">
+                <div class="overlay-grid">
+                    <div class="project-images">
+                     images
+                    </div>
+                    <div class="project-content" id="project-content">
+                        content
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--This is the footer of the page.-->
         <!--
         <div class="footer">
@@ -131,23 +123,6 @@
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- Smooth slide-->
         <script>
-            /*
-            $(function() {
-              $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                  var target = $(this.hash);
-                  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                  if (target.length) {
-                    $('html,body').animate({
-                      scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                  }
-                }
-              });
-            });
-            */
-            
             /*
             will fade in the content of b1
             */
@@ -206,6 +181,24 @@
             $( "#cv-button" ).click(function() {
                 
             });
+            
+            
+            /*
+            make all the buttons activate the overlay!
+            */
+            const buttons = document.getElementsByClassName("see-more-button");
+            var i;
+            for(i=0; i<buttons.length; i++){
+                var button = buttons[i];
+                button.onclick = function() {
+                    document.getElementById("overlay-fade-project").style.opacity = "1";
+                    document.getElementById("projects").style.filter = "blur(3px)";
+                    document.getElementById("header").style.filter = "blur(3px)";
+                    document.getElementById("project-content").innerHTML = this.getAttribute("id");
+                    //fyll på med content från det post med id = this.getAttribute("id").
+                    //...
+                }
+            }
         </script>
     </body>
 </html>
